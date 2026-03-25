@@ -1,0 +1,5 @@
+{
+  "names": [
+    { "query": "Albert Einstein", "expectedText": "Einstein" }
+  ]
+}
