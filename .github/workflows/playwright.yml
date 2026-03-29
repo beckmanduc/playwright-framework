@@ -3,6 +3,16 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+    inputs:
+      test_scope:
+        description: Select which tests to run
+        required: true
+        default: api
+        type: choice
+        options:
+        - api
+        - ui
+        - all
 
 permissions:
   contents: write
@@ -12,6 +22,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      TEST_SCOPE: ${{ github.event_name == 'workflow_dispatch' && inputs.test_scope || 'all' }}
     steps:
     - uses: actions/checkout@v4
 
@@ -23,6 +35,7 @@ jobs:
       run: npm ci
 
     - name: Install Playwright Browsers
+      if: ${{ env.TEST_SCOPE == 'ui' || env.TEST_SCOPE == 'all' }}
       run: npx playwright install --with-deps
 
     - name: Get Allure history from gh-pages
@@ -40,7 +53,23 @@ jobs:
         fi
 
     - name: Run Playwright tests
-      run: npm run test:api
+      run: |
+        echo "Running test scope: ${TEST_SCOPE}"
+        case "${TEST_SCOPE}" in
+          api)
+            npm run test:api
+            ;;
+          ui)
+            npx playwright test tests/search
+            ;;
+          all)
+            npm run test
+            ;;
+          *)
+            echo "Unsupported test scope: ${TEST_SCOPE}"
+            exit 1
+            ;;
+        esac
       continue-on-error: true
 
     - name: Generate Allure Report
