@@ -1,3 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","16557","should display search results page with correct title","chromium","2026-03-25","failed","2026-03-25","Google Search - Search by Name","search/google-search.spec.ts","",""
-"","16562","should return results when searching for ""Albert Einstein""","chromium","2026-03-25","failed","2026-03-25","Google Search - Search by Name","search/google-search.spec.ts","",""
+"","24","GET /users should return a non-empty list","chromium","2026-03-29","passed","2026-03-29","Public API Demo","api/public-api.spec.ts","",""
+"","121","GET /todos/:id should return a todo item","chromium","2026-03-29","passed","2026-03-29","Public API Demo","api/public-api.spec.ts","",""
+"","53","POST /posts should return 201 with created payload","chromium","2026-03-29","passed","2026-03-29","Public API Demo","api/public-api.spec.ts","",""
