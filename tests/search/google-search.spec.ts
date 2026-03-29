@@ -1,5 +1,5 @@
-import { test, expect } from '../../fixtures/search.fixture';
-import searchData from '../../data/search.json';
+import { test, expect } from '@fixtures/search.fixture';
+import searchData from '@data/search.json';
 
 test.describe('Google Search - Search by Name', () => {
   for (const { query, expectedText } of searchData.names) {

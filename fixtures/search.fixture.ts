@@ -1,5 +1,5 @@
-import { test as base, type Page } from '@playwright/test';
-import { GoogleSearchPage } from '../pages/GoogleSearchPage';
+import { test as base } from '@playwright/test';
+import { GoogleSearchPage } from '@pages/GoogleSearchPage';
 
 type SearchFixtures = {
   googleSearchPage: GoogleSearchPage;

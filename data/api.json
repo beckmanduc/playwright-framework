@@ -1,0 +1,9 @@
+{
+  "todoId": 1,
+  "minimumUsers": 1,
+  "postPayload": {
+    "title": "Playwright API Demo",
+    "body": "Testing API endpoint with Playwright",
+    "userId": 99
+  }
+}

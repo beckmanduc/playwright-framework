@@ -1,5 +1,5 @@
 node_modules/
-allure-results/
-allure-report/
 reports/
 test-results/
+dist/
+.DS_Store
