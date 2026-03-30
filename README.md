@@ -33,36 +33,10 @@ playwright-framework/
 └── tsconfig.json                      # TypeScript compiler and path alias config
 ```
 
-## Why These GitHub Workflow Permissions
-
-In [ .github/workflows/playwright.yml ](.github/workflows/playwright.yml), this block is required for your current flow:
-
-```yaml
-permissions:
-	contents: write
-	pages: write
-```
-
-1. `contents: write`
-- Allows the workflow to read/write repository content in branches.
-- Needed for publishing to `gh-pages` and for pulling/copying previous Allure `history`.
-
-2. `pages: write`
-- Allows deployment to GitHub Pages.
-- Needed because the workflow publishes Allure static site for web viewing.
-
-How it connects to Allure history flow:
-
-1. Workflow checks out `gh-pages` branch.
-2. Copies `gh-pages/history` into `reports/allure-results/history`.
-3. Generates new Allure report with trend history.
-4. Publishes updated report back to `gh-pages`.
-
-Without these permissions, deployment/history steps can fail due to insufficient rights.
-
 ## Setup Allure Report on GitHub Pages
 
 1. Ensure workflow exists at [ .github/workflows/playwright.yml ](.github/workflows/playwright.yml) and includes:
+- permissions: `contents: write` and `pages: write`
 - run tests
 - generate Allure report
 - deploy `reports/allure-report` to `gh-pages`
